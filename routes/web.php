@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -22,21 +25,18 @@ Route::get('/', function () {
 Route::get('/roles', [PermissionController::class,'Permission'])->name('permission-def');;
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('events', EventController::class);
-    // Route::get('/user', function() {
- 
-    //    return 'Welcome...!!';
-       
-    // });
- 
+    
  });
 
+ Route::get('users/{user}/assign-roles', [RolesController::class, 'assignRoles'])->name('assignRoles');
+ Route::post('users/{user}/store-assigned-roles', [RolesController::class, 'storeAssignedRoles'])->name('storeAssignedRoles');
 require __DIR__.'/auth.php';

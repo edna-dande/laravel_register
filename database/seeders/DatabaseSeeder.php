@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminUserSeeder::class,
             EventTypeSeeder::class,
+            RoleSeeder::class,
+            PermissionSeeder::class,
         ]);
+
         // \App\Models\User::factory(10)->create();
     }
 }
