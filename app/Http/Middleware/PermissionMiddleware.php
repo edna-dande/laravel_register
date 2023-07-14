@@ -16,6 +16,7 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        dd('here');
         return $next($request);
     }
 }

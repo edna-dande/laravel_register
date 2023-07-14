@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Assign Roles to User</h1>
+        <h1 style="font-size: 25px;">Assign Roles to User</h1>
         
         <form action="{{ route('storeAssignedRoles', $user) }}" method="POST">
             @csrf

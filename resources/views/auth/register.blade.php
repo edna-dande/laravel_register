@@ -1,9 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+           
         </x-slot>
 
         <!-- Validation Errors -->
@@ -43,6 +41,17 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="roles" :value="__('Roles')" />
+
+                <x-select id="select" class="block w-full" name="roles[]" multiple required>
+                    <option value="" selected disabled hidden>{{ __('Select Role') }}</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endforeach
+                </x-select>
             </div>
 
             <div class="flex items-center justify-end mt-4">
