@@ -11,6 +11,7 @@ use DB;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Permission;
+use App\Services\Password;
 use App\Mail\UserCreated;
 use Illuminate\Support\Facades\Mail;
 
@@ -44,7 +45,11 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        Mail::to($request->user())->send(new UserCreated($user));
+        $passwordService = new Password();
+
+        $password = $passwordService::create($input);
+
+        Mail::to($request->user())->send(new UserCreated($user, $password));
 
         return redirect()->route('users.index')
                         ->with('success','User created successfully');

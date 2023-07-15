@@ -47,6 +47,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
+    Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('/roles/{role}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']) ->middleware('admin') ->name('admin.dashboard');
     Route::get('users/{user}/assign-roles', [RolesController::class, 'assignRoles'])->name('assignRoles');
     Route::post('users/{user}/store-assigned-roles', [RolesController::class, 'storeAssignedRoles'])->name('storeAssignedRoles');

@@ -51,12 +51,12 @@
             </div>
 
             <div class="form-group">
-            <label for="attendees" style="color: white;">Attendees</label> <br>
+            <label style="color: white;">Attendees</label> <br>
                 @foreach ($users as $user)
                     <label for="{{ 'attendees'.$user->id }}" style="color: white;">
                         {{ $user->name }}
                     </label>
-                    <input type="checkbox" name="attendees" id="{{ 'attendees'.$user->id }}" class="form-control" value="{{ old('attendees') }}">
+                    <input type="checkbox" name="{{ 'attendees['.$user->id.']' }}" id="{{ 'attendees'.$user->id }}" class="form-control" value="{{ $user->id }}">
                     <br>
                 @endforeach
                 @error('attendees')

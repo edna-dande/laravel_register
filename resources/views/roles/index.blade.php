@@ -23,7 +23,7 @@
                         @csrf
                         @method('DELETE')
 {{--                         @can('role-delete') --}}
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this role?')">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm" style="background-color: red;" onclick="return confirm('Are you sure you want to delete this role?')">Delete</button>
 {{--                         @endcan --}}
                     </form>
                 </div>
